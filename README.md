@@ -1,0 +1,8 @@
+Projeto Desafio WebScrapping
+Segue o código em python para o desafio do processo seletivo infosimples 
+
+Matériais de estuddo:
+
+Infosimples https://github.com/infosimples/estagio-em-programacao
+Freecodecamp https://youtu.be/XVv6mJpFOb0?si=1Wxbj-eOwMPsgbXl
+Walisson Silva https://github.com/walissonsilva/web-scraping-python
