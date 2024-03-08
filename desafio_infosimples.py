@@ -2,13 +2,13 @@ import requests
 from bs4 import BeautifulSoup
 import json
 
-#requisição do site por meio do get
+#Requisição do site por meio do get
 resposta=requests.get("https://infosimples.com/vagas/desafio/commercia/product.html")
-#conteudo retirado da requisição
+#Conteúdo retirado da requisição
 conteudo=resposta.content
-#transformando o conteudo em html-parser
+#Transformando o conteúdo em html-parser
 site=BeautifulSoup(conteudo,"html.parser")
-#Usando o print prettyfy método é possivel ver toda a pagina html
+#Usando o print prettyfy método é possível ver toda a página html
 #print(site.prettify())
 #buscando as informações solicitada
 titulo=site.find("h2",attrs={'id':"product_title"})
@@ -16,8 +16,8 @@ brand=site.find("div",attrs={"class":"brand"})
 categoria=site.find("ul",attrs={"class":"breadcrumb"})
 descricao=site.find("div",attrs={"class":"proddet"})
 skus=site.find_all("div",attrs={"class":"card"})
-#Buscs da propriedades onde o resultado é armazenado em array propriedade_valores,
-#um loop for é usado para salavr as informações de propiedade e valor da tabela solicitada
+#Busca da propriedades onde o resultado é armazenado em array propriedade_valores,
+#um loop for é usado para salvar as informações de propiedade e valor da tabela solicitada
 propriedades=site.find("table",attrs={"class":"pure-table pure-table-bordered"})
 propriedades_valores = []
 for row in propriedades.find_all('tr'):
@@ -38,8 +38,7 @@ def produto(sku):
     preco_antigo = sku.find("div", attrs={"class": "prod-pold"})
     estoque = bool(sku.find("div", attrs={"class": "card not-avaliable"}))
 
-    #Verifica se for float e troca o RS por vazio e a virgula para ser possivel extrair como float
-    # alem de verificar se não estiver vazio caso esteja passa valor none
+    #Verifica se há valor e transforma em float caso não haja passa o valor como none
     if preco_atua:
         preco_atua = float(preco_atua.text.replace('R$', '').replace(',', '.'))
     else:
@@ -52,7 +51,7 @@ def produto(sku):
 
     return {'name': nome.text.strip() if nome else '', 'current': preco_atua, 'antigo': preco_antigo,
             'estoque': estoque}
-#Outro método para salvar todas as informações procuradas de uma área especifica porem, para as avaliações
+#Outro método para salvar todas as informações procuradas de uma área especifica porém, para as avaliações
 def avaliar(avaliacao):
     nome = avaliacao.find("span", attrs={"class": "analiseusername"})
     date = avaliacao.find("span", attrs={"class": "analisedate"})
