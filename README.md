@@ -5,7 +5,7 @@ Segue o código em python para o desafio do processo seletivo infosimples
 <br>
 "Solução pode ser encontrada em Produto.json."
 
-Matériais de estuddo:
+Matériais de estudo:
 
 Infosimples https://github.com/infosimples/estagio-em-programacao
 <br>
